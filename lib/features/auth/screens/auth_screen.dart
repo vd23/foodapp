@@ -29,6 +29,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   void dispose() {
+    super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
@@ -67,7 +68,7 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
           ListTile(
             tileColor: _auth == Auth.signup
-                ? Color.fromARGB(255, 249, 247, 247)
+                ? const Color.fromARGB(255, 249, 247, 247)
                 : GlobalVariables.greyBackgroundColor,
             title: const Text(
               'Create Account',
@@ -89,7 +90,7 @@ class _AuthScreenState extends State<AuthScreen> {
           if (_auth == Auth.signup)
             Container(
               padding: const EdgeInsets.all(8),
-              color: Color.fromARGB(255, 252, 252, 252),
+              color: const Color.fromARGB(255, 252, 252, 252),
               child: Form(
                 key: _sigUpFormKey,
                 child: Column(
@@ -151,7 +152,7 @@ class _AuthScreenState extends State<AuthScreen> {
           if (_auth == Auth.signin)
             Container(
               padding: const EdgeInsets.all(8),
-              color: Color.fromARGB(255, 255, 254, 254),
+              color:const Color.fromARGB(255, 255, 254, 254),
               child: Form(
                 key: _sigInFormKey,
                 child: Column(

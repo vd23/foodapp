@@ -1,7 +1,6 @@
 import 'package:amazon_clone_app/constants/global_variables.dart';
 import 'package:amazon_clone_app/features/account/widgets/single_product.dart';
 import 'package:amazon_clone_app/features/order_details/screens/order_details.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../commom/widgets/loader.dart';
@@ -22,7 +21,6 @@ class _OrdersState extends State<Orders> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchOrders();
   }

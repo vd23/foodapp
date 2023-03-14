@@ -94,7 +94,7 @@ class _AddressScreenState extends State<AddressScreen> {
     } else {
       showSnackBar(context, 'ERROR');
     }
-    print(addressToBeUsed);
+    //print(addressToBeUsed);
   }
 
   @override
@@ -184,7 +184,7 @@ class _AddressScreenState extends State<AddressScreen> {
                 width: double.infinity,
                 style: ApplePayButtonStyle.whiteOutline,
                 type: ApplePayButtonType.buy,
-                paymentConfigurationAsset: 'applepay.json',
+                //paymentConfigurationAsset: 'applepay.json',
                 onPaymentResult: onApplePayResult,
                 paymentItems: paymentItems,
                 margin: const EdgeInsets.only(top: 15),

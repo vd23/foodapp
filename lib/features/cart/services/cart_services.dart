@@ -1,13 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:amazon_clone_app/constants/global_variables.dart';
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-
 import '../../../constants/error_handling.dart';
 import '../../../constants/utils.dart';
 import '../../../models/product.dart';

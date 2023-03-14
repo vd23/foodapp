@@ -1,8 +1,6 @@
 import 'package:amazon_clone_app/constants/global_variables.dart';
 import 'package:amazon_clone_app/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
 
 class BelowAppBar extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:amazon_clone_app/constants/global_variables.dart';
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -77,7 +76,6 @@ class ProdcutDetailsServices {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-    return productList;
   }
 
   void deleteProduct(

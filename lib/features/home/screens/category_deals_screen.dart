@@ -1,5 +1,4 @@
 import 'package:amazon_clone_app/features/product_details/screens/product_deatils_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../commom/widgets/loader.dart';
@@ -22,7 +21,6 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchCategoryProducts();
   }

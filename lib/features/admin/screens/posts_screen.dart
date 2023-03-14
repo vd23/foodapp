@@ -18,7 +18,6 @@ class _PostScreenState extends State<PostScreen> {
   final AdminServices adminServices = AdminServices();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchAllProducts();
   }

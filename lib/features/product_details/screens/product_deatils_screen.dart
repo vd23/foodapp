@@ -204,7 +204,7 @@ class _ProductDeatilScreenState extends State<ProductDeatilScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: '\RS.${widget.product.price}',
+                      text: 'RS.${widget.product.price}',
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.red,

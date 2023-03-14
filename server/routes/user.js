@@ -1,10 +1,10 @@
 const express = require("express");
 const userRouter = express.Router();
-const auth = require('../middlewares/auth');
+const auth = require("../middlewares/auth");
 
 userRouter.post("/admin/add-to-cart", auth, async (req,res) => {
     try{
-        const {id} = req.body;
+        const { id } = req.body;
         const product = await Product.findById(id);
         let user = await User.findById(req.user);
 

@@ -1,8 +1,8 @@
+import 'package:amazon_clone_app/features/admin/screens/analtyics_screen.dart';
+import 'package:amazon_clone_app/features/admin/screens/orders_screen.dart';
+import 'package:amazon_clone_app/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart' as badges;
 import '../../../constants/global_variables.dart';
-import '../../account/screens/account_screen.dart';
-import '../../home/screens/home_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -12,15 +12,15 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
-  @override
+
   int _page = 0;
   double bottomBarWidth = 42;
   double bottomBarBorderWidth = 5;
 
   List<Widget> pages = [
-     const Center(child: Text('Posts Page'),),
-    const Center(child: Text('Analytics Page'),),
-    const Center(child: Text('Cart Page'),),
+     const PostScreen(),
+     const AnalyticsScreen(),
+     const OrdersScreen(),
 
   ];
 
@@ -30,6 +30,7 @@ class _AdminScreenState extends State<AdminScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       

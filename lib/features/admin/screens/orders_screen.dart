@@ -1,7 +1,8 @@
 import 'package:amazon_clone_app/features/account/widgets/single_product.dart';
 import 'package:amazon_clone_app/features/admin/services/admin_services.dart';
+import 'package:amazon_clone_app/features/order_details/screens/order_details.dart';
 import 'package:flutter/material.dart';
-
+import '../../../commom/widgets/loader.dart';
 import '../../../models/order.dart';
 
 class OrdersScreen extends StatefulWidget {
@@ -21,22 +22,35 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   void fetchOrders() async {
     orders = await adminServices.fetchAllOrders(context);
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: orders!.length,
-      gridDelegate: const Sli,
-      itemBuilder: (context, index) {
-        final orderData = orders![index];
-        return SizedBox(
-          height: 140,
-          child: SingleProduct(
-            image: orderData.products[0].images[0],
-          ),
-        );
-      },
-    );
+    return orders == null
+        ? const Loader()
+        : GridView.builder(
+            itemCount: orders!.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            itemBuilder: (context, index) {
+              final orderData = orders![index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    OrderDetailScreen.routeName,
+                    arguments: orderData,
+                  );
+                },
+                child: SizedBox(
+                  height: 140,
+                  child: SingleProduct(
+                    image: orderData.products[0].images[0],
+                  ),
+                ),
+              );
+            },
+          );
   }
 }

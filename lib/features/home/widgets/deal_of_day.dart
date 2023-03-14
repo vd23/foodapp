@@ -58,7 +58,7 @@ class _DealOfDayState extends State<DealOfDay> {
                       padding: const EdgeInsets.only(left: 15),
                       alignment: Alignment.topLeft,
                       child: const Text(
-                        '\Rs. 100',
+                        'Rs. 100',
                         style: TextStyle(fontSize: 18),
                       ),
                     ),

@@ -1,18 +1,15 @@
 import 'dart:convert';
-
 import 'package:amazon_clone_app/constants/error_handling.dart';
 import 'package:amazon_clone_app/constants/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../commom/widgets/bottom_bar.dart';
 import '../../../constants/global_variables.dart';
 import '../../../models/user.dart';
 import 'package:http/http.dart' as http;
-
 import '../../../providers/user_provider.dart';
-import '../../home/screens/home_screen.dart';
+
 
 class AuthService {
   // sign up user
@@ -74,7 +71,7 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      print(res.body);
+      //print(res.body);
       // ignore: use_build_context_synchronously
       httpErrorHandle(
         response: res,
@@ -103,7 +100,7 @@ class AuthService {
   ) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString('a-auth-token');
+      String? token = prefs.getString('x-auth-token');
       if (token == null) {
         prefs.setString('x-auth-token', '');
       }
@@ -125,6 +122,7 @@ class AuthService {
           },
         );
 
+        // ignore: use_build_context_synchronously
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userRes.body);
       }

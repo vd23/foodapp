@@ -5,13 +5,11 @@ import 'package:amazon_clone_app/features/product_details/screens/product_deatil
 import 'package:amazon_clone_app/features/search/screens/search_screen.dart';
 import 'package:amazon_clone_app/models/product.dart';
 import 'package:flutter/material.dart';
-
 import 'commom/widgets/bottom_bar.dart';
 import 'features/address/screens/address_screen.dart';
 import 'features/home/screens/home_screen.dart';
 import 'features/order_details/screens/order_details.dart';
 import 'models/order.dart';
-import 'models/product.dart';
 
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {

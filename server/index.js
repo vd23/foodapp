@@ -5,11 +5,12 @@ const adminRouter = require("./routes/admin");
 
 // IMPORTS FROM OTHER FILES
 const authRouter = require("./routes/auth");
-const productRouter = require("./routes/products");
+const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
 // middleware
 
 //INIT
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const DB = "mongodb+srv://admin:admin123@cluster0.ugijea4.mongodb.net/test?retryWrites=true&w=majority"
 

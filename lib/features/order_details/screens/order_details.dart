@@ -1,8 +1,12 @@
+import 'package:amazon_clone_app/commom/widgets/custom_button.dart';
+import 'package:amazon_clone_app/features/admin/services/admin_services.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants/global_variables.dart';
 import '../../../models/order.dart';
+import '../../../providers/user_provider.dart';
 import '../../search/screens/search_screen.dart';
 
 class OrderDetailScreen extends StatefulWidget {
@@ -20,6 +24,7 @@ class OrderDetailScreen extends StatefulWidget {
 
 class _OrderDetailScreenState extends State<OrderDetailScreen> {
   int currentStep = 0;
+  final AdminServices adminServices = AdminServices();
 
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
@@ -27,13 +32,27 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     currentStep = widget.order.status;
   }
 
+ // !!! Only for Admin !!! 
+  void changeOrderStatus(int status) {
+    adminServices.changeOrderStatus(
+      context: context, 
+      status: status + 1, 
+      order: widget.order, 
+      onSuccess: () {
+        setState(() {
+          currentStep += 1;
+         });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -135,7 +154,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                           widget.order.orderedAt),
                     )}'),
                     Text('Order ID:         ${widget.order.id}'),
-                    Text('Order Total:      \RS.${widget.order.totalPrice}'),
+                    Text('Order Total:      RS.${widget.order.totalPrice}'),
                   ],
                 ),
               ),
@@ -207,6 +226,9 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                 child: Stepper(
                   currentStep: currentStep,
                   controlsBuilder: (context, details) {
+                    if(user.type == 'admin'){
+                      return CustomButton(text: 'Done', onTap: () => changeOrderStatus(details.currentStep),);
+                    }
                     return const SizedBox();
                   },
                   steps: [
@@ -216,8 +238,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         'Your order is yet to be delivered',
                       ),
                       isActive: currentStep > 0,
-                      state: currentStep > 0 
-                          ? StepState.complete  
+                      state: currentStep > 0
+                          ? StepState.complete
                           : StepState.indexed,
                     ),
                     Step(
@@ -226,8 +248,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         'Your order has been delivered, you are yet to sign.',
                       ),
                       isActive: currentStep > 1,
-                      state: currentStep > 1 
-                          ? StepState.complete  
+                      state: currentStep > 1
+                          ? StepState.complete
                           : StepState.indexed,
                     ),
                     Step(
@@ -236,8 +258,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         'Your order has been delivered and signed by you.',
                       ),
                       isActive: currentStep > 2,
-                      state: currentStep > 2 
-                          ? StepState.complete  
+                      state: currentStep > 2
+                          ? StepState.complete
                           : StepState.indexed,
                     ),
                     Step(
@@ -247,7 +269,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       ),
                       isActive: currentStep >= 3,
                       state: currentStep >= 3
-                          ? StepState.complete  
+                          ? StepState.complete
                           : StepState.indexed,
                     ),
                   ],
